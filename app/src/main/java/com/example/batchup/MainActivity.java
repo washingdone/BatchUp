@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         showTV.setText(contents);
     }
 
-    public void batchButton(){
+    public void batchButton(View v){
         TextView showTV = findViewById(R.id.showTV);
         EditText multiplyET = findViewById(R.id.multiplyET);
         String batchNumStr = multiplyET.getText().toString();
@@ -34,13 +35,15 @@ public class MainActivity extends AppCompatActivity {
                 String newData = (1 * batchNumber) + " cup water\n" +
                         (2 * batchNumber) + " teaspoons lemon juice\n" +
                         (3 * batchNumber) + " tablespoons sugar";
+                showTV.setText(newData);
             }
         } catch(NumberFormatException e) {
             // Handle invalid input
             Toast.makeText(this, "Please input a positive integer", Toast.LENGTH_SHORT).show();
         } catch (Exception e) {
             // Handle all other exceptions
-            Log.d("Unknown exception: ", e.toString());
+            Log.d("Unknown exception", e.toString());
+            Toast.makeText(this, "Unknown error has occured, please try again", Toast.LENGTH_SHORT).show();
         }
     }
 }
