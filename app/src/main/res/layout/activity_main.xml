@@ -10,11 +10,15 @@
         android:id="@+id/showTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-light"
         android:text="L1\nL2\nL3"
+        android:textColor="@color/black"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/TripleBTN"
+        app:layout_constraintVertical_bias="0.35000002" />
 
     <EditText
         android:id="@+id/multiplyET"
@@ -33,15 +37,48 @@
         android:id="@+id/updateBatchBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:onClick="batchButton"
         android:text="Use Batch #"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/TripleBTN"
+        app:layout_constraintTop_toBottomOf="@+id/multiplyET" />
+
+    <Button
+        android:id="@+id/TripleBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:text="3"
+        app:layout_constraintEnd_toStartOf="@+id/updateBatchBTN"
+        app:layout_constraintStart_toEndOf="@+id/DoubleBTN"
+        app:layout_constraintTop_toBottomOf="@+id/multiplyET" />
+
+    <Button
+        android:id="@+id/DoubleBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:text="2"
+        app:layout_constraintEnd_toStartOf="@+id/TripleBTN"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/multiplyET" />
+
+    <TextView
+        android:id="@+id/descriptonTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="Number of batches to make"
+        app:layout_constraintBottom_toBottomOf="@+id/multiplyET"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/multiplyET"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.050000012" />
+        app:layout_constraintTop_toTopOf="@+id/multiplyET" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
