@@ -15,24 +15,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Set up initial display data
         TextView showTV = findViewById(R.id.showTV);
-        String contents =showTV.getText().toString();
-        contents = "1 cup water\n2 teaspoons lemon juice\n3 tablespoons sugar";
+        String contents = "1 cup water\n2 teaspoons lemon juice\n3 tablespoons sugar";
         showTV.setText(contents);
     }
 
     public void batchButton(View v){
+        // Initialize needed fields and pull necessary data
         TextView showTV = findViewById(R.id.showTV);
         EditText multiplyET = findViewById(R.id.multiplyET);
         String batchNumStr = multiplyET.getText().toString();
 
         try {
-            int batchNumber =Integer.parseInt(batchNumStr);
+            // convert input to number
+            int batchNumber = Integer.parseInt(batchNumStr);
 
             if (batchNumber < 1) {
+                // If less than 1, prompt user to try again
                 throw new NumberFormatException();
             } else {
-                String newData = (1 * batchNumber) + " cup water\n" +
+                // Change display text to modified recipe
+                String newData = (batchNumber) + " cup water\n" +
                         (2 * batchNumber) + " teaspoons lemon juice\n" +
                         (3 * batchNumber) + " tablespoons sugar";
                 showTV.setText(newData);
@@ -43,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             // Handle all other exceptions
             Log.d("Unknown exception", e.toString());
-            Toast.makeText(this, "Unknown error has occured, please try again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Unknown error has occurred, please try again", Toast.LENGTH_SHORT).show();
         }
     }
 }
