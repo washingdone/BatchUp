@@ -25,10 +25,21 @@ public class MainActivity extends AppCompatActivity {
         // Initialize needed fields and pull necessary data
         EditText multiplyET = findViewById(R.id.multiplyET);
         String batchNumStr = multiplyET.getText().toString();
+        int batchNumber = 0;
 
         try {
-            // convert input to number
-            int batchNumber = Integer.parseInt(batchNumStr);
+            switch(v.getId()){
+                case R.id.updateBatchBTN:
+                    // convert input to number if use button is selected
+                    batchNumber = Integer.parseInt(batchNumStr);
+                    break;
+                case R.id.DoubleBTN:
+                    batchNumber = 2;
+                    break;
+                case R.id.TripleBTN:
+                    batchNumber = 3;
+                    break;
+            }
 
             if (batchNumber < 1) {
                 // If less than 1, prompt user to try again
@@ -46,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void recipeGenerator(int batchNumber) {
+    private void recipeGenerator(int batchNumber) {
         // Initialize needed fields and pull necessary data
         TextView showTV = findViewById(R.id.showTV);
 
