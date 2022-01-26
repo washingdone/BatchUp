@@ -21,9 +21,8 @@ public class MainActivity extends AppCompatActivity {
         showTV.setText(contents);
     }
 
-    public void batchButton(View v){
+    public void batchButton(View v) {
         // Initialize needed fields and pull necessary data
-        TextView showTV = findViewById(R.id.showTV);
         EditText multiplyET = findViewById(R.id.multiplyET);
         String batchNumStr = multiplyET.getText().toString();
 
@@ -35,11 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 // If less than 1, prompt user to try again
                 throw new NumberFormatException();
             } else {
-                // Change display text to modified recipe
-                String newData = (batchNumber) + " cup water\n" +
-                        (2 * batchNumber) + " teaspoons lemon juice\n" +
-                        (3 * batchNumber) + " tablespoons sugar";
-                showTV.setText(newData);
+                recipeGenerator(batchNumber);
             }
         } catch(NumberFormatException e) {
             // Handle invalid input
@@ -49,5 +44,16 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Unknown exception", e.toString());
             Toast.makeText(this, "Unknown error has occurred, please try again", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    public void recipeGenerator(int batchNumber) {
+        // Initialize needed fields and pull necessary data
+        TextView showTV = findViewById(R.id.showTV);
+
+        // Change display text to modified recipe
+        String newData = (batchNumber) + " cup water\n" +
+                (2 * batchNumber) + " teaspoons lemon juice\n" +
+                (3 * batchNumber) + " tablespoons sugar";
+        showTV.setText(newData);
     }
 }
