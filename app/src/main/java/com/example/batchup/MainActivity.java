@@ -22,15 +22,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void batchButton(View v) {
-        // Initialize needed fields and pull necessary data
+        // Initialize needed fields and pull or set necessary data
+        TextView showTV = findViewById(R.id.showTV);
         EditText multiplyET = findViewById(R.id.multiplyET);
         String batchNumStr = multiplyET.getText().toString();
         int batchNumber = 0;
 
         try {
             switch(v.getId()){
+                // Check which button is pushed by comparing the button's id to expected values
                 case R.id.updateBatchBTN:
-                    // convert input to number if use button is selected
+                    // Convert input to number if use button is selected
                     batchNumber = Integer.parseInt(batchNumStr);
                     break;
                 case R.id.DoubleBTN:
@@ -39,13 +41,16 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.TripleBTN:
                     batchNumber = 3;
                     break;
+                // Note: no default needed as initial batch number will automatically fail in later code
             }
 
             if (batchNumber < 1) {
                 // If less than 1, prompt user to try again
                 throw new NumberFormatException();
             } else {
-                recipeGenerator(batchNumber);
+                // Generate and set new recipe
+                String newData = recipeGenerator(batchNumber);
+                showTV.setText(newData);
             }
         } catch(NumberFormatException e) {
             // Handle invalid input
@@ -53,18 +58,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (Exception e) {
             // Handle all other exceptions
             Log.d("Unknown exception", e.toString());
-            Toast.makeText(this, "Unknown error has occurred, please try again", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Unknown error has occurred, please try again. - Error BN" + batchNumber, Toast.LENGTH_SHORT).show();
         }
     }
 
-    private void recipeGenerator(int batchNumber) {
-        // Initialize needed fields and pull necessary data
-        TextView showTV = findViewById(R.id.showTV);
-
+    private String recipeGenerator(int batchNumber) {
         // Change display text to modified recipe
-        String newData = (batchNumber) + " cup water\n" +
+        return (batchNumber) + " cup water\n" +
                 (2 * batchNumber) + " teaspoons lemon juice\n" +
                 (3 * batchNumber) + " tablespoons sugar";
-        showTV.setText(newData);
+
     }
 }
