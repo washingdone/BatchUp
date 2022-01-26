@@ -90,13 +90,14 @@ public class MainActivity extends AppCompatActivity {
 
     private String recipeGenerator(int batchNumber) {
         int recipe = getRecipe();
+        String waterString = (batchNumber == 1) ? " cup water\n":" cups water\n";
         if (recipe == 0) {
             // Change display text to modified recipe
-            return (batchNumber) + " cup water\n" +
+            return (batchNumber) + waterString +
                     (2 * batchNumber) + " teaspoons lemon juice\n" +
                     (3 * batchNumber) + " tablespoons sugar";
         } else if (recipe == 1) {
-            return (batchNumber) + " cup water\n" +
+            return (batchNumber) + waterString +
                     (2 * batchNumber) + " teaspoons lemon juice\n" +
                     (3 * batchNumber) + " tablespoons sugar\n" +
                     (2 * batchNumber) + " drops of red food dye";
