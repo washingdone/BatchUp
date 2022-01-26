@@ -38,20 +38,20 @@
         android:id="@+id/updateBatchBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:onClick="batchButton"
         android:text="Use Batch #"
+        app:layout_constraintBottom_toBottomOf="@+id/TripleBTN"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/TripleBTN"
-        app:layout_constraintTop_toBottomOf="@+id/multiplyET" />
+        app:layout_constraintTop_toTopOf="@+id/TripleBTN" />
 
     <Button
         android:id="@+id/TripleBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="20dp"
         android:onClick="batchButton"
@@ -59,19 +59,20 @@
         app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toStartOf="@+id/updateBatchBTN"
         app:layout_constraintStart_toEndOf="@+id/DoubleBTN"
-        app:layout_constraintTop_toBottomOf="@+id/multiplyET" />
+        app:layout_constraintTop_toBottomOf="@+id/multiplyET"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/DoubleBTN"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
         android:onClick="batchButton"
         android:text="2"
+        app:layout_constraintBottom_toBottomOf="@+id/TripleBTN"
         app:layout_constraintEnd_toStartOf="@+id/TripleBTN"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/multiplyET" />
+        app:layout_constraintTop_toTopOf="@+id/TripleBTN" />
 
     <TextView
         android:id="@+id/descriptonTV"
@@ -106,6 +107,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="5dp"
+        android:onClick="recipeButton"
         android:text="Classic Lemonade"
         app:layout_constraintEnd_toStartOf="@+id/PinkBTN"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,6 +120,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
+        android:onClick="recipeButton"
         android:text="Pink Lemonade"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/ClassicBTN"

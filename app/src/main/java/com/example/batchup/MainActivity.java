@@ -21,6 +21,19 @@ public class MainActivity extends AppCompatActivity {
         showTV.setText(contents);
     }
 
+    private int recipe;
+
+    public void setRecipe(int recipe) {
+        TextView showTV = findViewById(R.id.showTV);
+        this.recipe = recipe;
+        String newData = recipeGenerator(1);
+        showTV.setText(newData);
+    }
+
+    public int getRecipe() {
+        return recipe;
+    }
+
     public void batchButton(View v) {
         // Initialize needed fields and pull or set necessary data
         TextView showTV = findViewById(R.id.showTV);
@@ -62,11 +75,32 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String recipeGenerator(int batchNumber) {
-        // Change display text to modified recipe
-        return (batchNumber) + " cup water\n" +
-                (2 * batchNumber) + " teaspoons lemon juice\n" +
-                (3 * batchNumber) + " tablespoons sugar";
+    public void recipeButton(View v) {
+        switch(v.getId()){
+            case R.id.ClassicBTN:
+                setRecipe(0);
+                break;
+            case R.id.PinkBTN:
+                setRecipe(1);
+                break;
+            default:
+                throw new RuntimeException();
+        }
+    }
 
+    private String recipeGenerator(int batchNumber) {
+        int recipe = getRecipe();
+        if (recipe == 0) {
+            // Change display text to modified recipe
+            return (batchNumber) + " cup water\n" +
+                    (2 * batchNumber) + " teaspoons lemon juice\n" +
+                    (3 * batchNumber) + " tablespoons sugar";
+        } else if (recipe == 1) {
+            return (batchNumber) + " cup water\n" +
+                    (2 * batchNumber) + " teaspoons lemon juice\n" +
+                    (3 * batchNumber) + " tablespoons sugar\n" +
+                    (2 * batchNumber) + " drops of red food dye";
+        }
+        throw new RuntimeException();
     }
 }
