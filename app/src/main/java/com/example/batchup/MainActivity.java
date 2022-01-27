@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void recipeButton(View v) {
+    public void recipeButton(View v) throws RuntimeException {
         switch(v.getId()){
             case R.id.ClassicBTN:
                 setRecipe(0);
@@ -88,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private String recipeGenerator(int batchNumber) {
+    private String recipeGenerator(int batchNumber) throws RuntimeException {
         int recipe = getRecipe();
+        // changes cup to cups if more than one batch is ordered
         String waterString = (batchNumber == 1) ? " cup water\n":" cups water\n";
         if (recipe == 0) {
             // Change display text to modified recipe
